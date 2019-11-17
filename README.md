@@ -18,7 +18,7 @@ Modules:
 Tibia data API requires [Node.js](https://nodejs.org/) to run.
 
 ```sh
-$ npm install --save
+$ npm install tibia-data-api --save
 ```
 ### How To use
 ```js
