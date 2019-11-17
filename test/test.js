@@ -117,12 +117,11 @@ function testHousesGetHousesByWorld() {
 
 // Highscores test
 function testHighscoresGetByWorldTypeAndVocation() {
+    // types experience, magic, shielding, distance, sword, club, axe, fist, fishing, achievements and loyalty
+    // You can use following fields instead: all, druid, knight, paladin and sorcerer.
     try {
-        // types experience, magic, shielding, distance, sword, club, axe, fist, fishing, achievements and loyalty
-        // You can use following fields instead: all, druid, knight, paladin and sorcerer.
-        tibiaAPI.highscores.getByWorldTypeAndVocation('Lutabra', 'experience', 'knight').then((response) => {
-            console.log(response)
-        })
+        let highscoresInfoByWorldTypeAndVocation = await tibiaAPI.highscores.getByWorldTypeAndVocation('Lutabra', 'experience', 'knight')
+        console.log(highscoresInfoByWorldTypeAndVocation)
     } catch (error) {
         console.log(error)
     }
@@ -130,52 +129,45 @@ function testHighscoresGetByWorldTypeAndVocation() {
 
 function testHighscoresGetByWorldAndType() {
     try {
-        // types experience, magic, shielding, distance, sword, club, axe, fist, fishing, achievements and loyalty
-        tibiaAPI.highscores.getByWorldAndType('Lutabra', 'experience').then((response) => {
-            console.log(response)
-        })
+        let highscoresInfoByWorldAndType = await tibiaAPI.highscores.getByWorldAndType('Lutabra', 'experience')
+        console.log(highscoresInfoByWorldAndType)
     } catch (error) {
         console.log(error)
     }
 }
 
-function testHighscoresGetByWorld() {
+async function testHighscoresGetByWorld() {
     try {
-        tibiaAPI.highscores.getByWorld('Lutabra').then((response) => {
-            console.log(response)
-        })
+        let highscoresInfo = await tibiaAPI.highscores.getByWorld('Lutabra')
+        console.log(highscoresInfo)
     } catch (error) {
         console.log(error)
     }
 }
 
-// Characters test
-function testCharacterInfo() {
-    try {
-        tibiaAPI.characters.getInfoByName('Akox Shena').then((response) => {
-            console.log(response)
-        })
-    } catch (error) {
-        console.log(error)
-    }
-}
+
 // Guilds test
-function testGuildByName() {
+async function testGuildByName() {
     try {
-        tibiaAPI.guilds.getByName('Skeletin Alliance').then((resolve, reject) => {
-            if (reject) console.log(reject)
-            console.log(resolve)
-        })
+        let guildInfo = await tibiaAPI.guilds.getByName('Skeletin Alliance')
+        console.log(guildInfo)
     } catch (error) {
         console.log(error)
     }
 }
 function testGuildByWorld() {
     try {
-        tibiaAPI.guilds.getByWorld('Lutabra').then((resolve, reject) => {
-            if (reject) console.log(reject)
-            console.log(resolve)
-        })
+        let guildInfo = tibiaAPI.guilds.getByWorld('Lutabra')
+        console.log(guildInfo)
+    } catch (error) {
+        console.log(error)
+    }
+}
+// Characters test
+async function testCharacterInfo() {
+    try {
+        let response = await tibiaAPI.characters.getInfoByName('Akox Shena')
+        console.log(response)
     } catch (error) {
         console.log(error)
     }
