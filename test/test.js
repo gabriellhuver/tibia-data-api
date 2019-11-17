@@ -1,7 +1,7 @@
 const tibiaAPI = require('../lib')
 
 
-//testCharacterInfo()
+testCharacterInfo()
 //testGuildByName()
 //testGuildByWorld()
 //testHighscoresGetByWorld()
@@ -116,7 +116,7 @@ function testHousesGetHousesByWorld() {
 
 
 // Highscores test
-function testHighscoresGetByWorldTypeAndVocation() {
+async function testHighscoresGetByWorldTypeAndVocation() {
     // types experience, magic, shielding, distance, sword, club, axe, fist, fishing, achievements and loyalty
     // You can use following fields instead: all, druid, knight, paladin and sorcerer.
     try {
@@ -127,7 +127,7 @@ function testHighscoresGetByWorldTypeAndVocation() {
     }
 }
 
-function testHighscoresGetByWorldAndType() {
+async function testHighscoresGetByWorldAndType() {
     try {
         let highscoresInfoByWorldAndType = await tibiaAPI.highscores.getByWorldAndType('Lutabra', 'experience')
         console.log(highscoresInfoByWorldAndType)
