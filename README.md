@@ -22,7 +22,18 @@ $ npm install --save
 ```
 ### How To use
 ```js
-    const tibiaAPI = require('tibia-data-api')
+const tibiaAPI = require('tibia-data-api')
+
+async function example() {
+    try {
+        let characterInfo = await tibiaAPI.characters
+            .getInfoByName('Akox Shena')
+        console.log(characterInfo)
+    } catch (error) {
+        console.log(error)
+    }
+}
+example()
 ```
 
 Character info 
