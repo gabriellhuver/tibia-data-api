@@ -2,38 +2,36 @@ const tibiaAPI = require('../lib')
 
 
 testCharacterInfo()
-//testGuildByName()
-//testGuildByWorld()
-//testHighscoresGetByWorld()
-//testHighscoresGetByWorldAndType()
-//testHighscoresGetByWorldTypeAndVocation()
-//testHousesGetHousesByWorld()
-//testHousesGetByWorldAndTown()
-//testHousesGetByWorldAndTownAndType()
-//testHousesGetByWorldAndId()
-//testGetLatestNews()
-//testGetNewsTickers()
-//testGetNewsByID()
-//testWorldsGetAll()
-//testWorldsGetByName()
+testGuildByName()
+testGuildByWorld()
+testHighscoresGetByWorld()
+testHighscoresGetByWorldAndType()
+testHighscoresGetByWorldTypeAndVocation()
+testHousesGetHousesByWorld()
+testHousesGetByWorldAndTown()
+testHousesGetByWorldAndTownAndType()
+testHousesGetByWorldAndId()
+testGetLatestNews()
+testGetNewsTickers()
+testGetNewsByID()
+testWorldsGetAll()
+testWorldsGetByName()
 
 // Worlds test
-function testWorldsGetByName() {
+async function testWorldsGetByName() {
     try {
-        tibiaAPI.worlds.getByName('Lutabra').then((response) => {
-            console.log(response)
-        })
+        let worldByName = await tibiaAPI.worlds.getByName('Lutabra')
+        if (worldByName.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
 }
 
 
-function testWorldsGetAll() {
+async function testWorldsGetAll() {
     try {
-        tibiaAPI.worlds.getAll().then((response) => {
-            console.log(response)
-        })
+        let allWorlds = await tibiaAPI.worlds.getAll()
+        if (allWorlds.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
@@ -41,32 +39,29 @@ function testWorldsGetAll() {
 
 // News test
 
-function testGetNewsByID() {
+async function testGetNewsByID() {
     try {
-        tibiaAPI.news.getNewsById('3575').then((response) => {
-            console.log(response)
-        })
+        let newById = await tibiaAPI.news.getNewsById('3575')
+        if (newById.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
 }
 
 
-function testGetNewsTickers() {
+async function testGetNewsTickers() {
     try {
-        tibiaAPI.news.getNewsTickers().then((response) => {
-            console.log(response)
-        })
+        let newsStickers = await tibiaAPI.news.getNewsTickers()
+        if (newsStickers.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
 }
 
-function testGetLatestNews() {
+async function testGetLatestNews() {
     try {
-        tibiaAPI.news.getLatestNews().then((response) => {
-            console.log(response)
-        })
+        let latestNews = await tibiaAPI.news.getLatestNews()
+        if (latestNews.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
@@ -74,41 +69,45 @@ function testGetLatestNews() {
 
 
 // Houses test
-function testHousesGetByWorldAndId() {
+/**
+ * Default value of town is Ab’Dendriel.
+You can use following fields instead: Ab’Dendriel, Ankrahmun, Carlin, Darashia, Edron, Farmine, Gray Beach, Kazordoon, Liberty Bay, Port Hope, Rathleton, Svargrond, Thais, Venore and Yalahar (or yeah, all the Tibia cities).
+
+Default value of type is houses.
+You can use following fields instead: houses and guildhalls. 
+ */
+async function testHousesGetByWorldAndId() {
     try {
-        tibiaAPI.houses.getByWorldAndId('Lutabra', '40211').then((response) => {
-            console.log(response)
-        })
+        let housesByWorldAndId = await tibiaAPI.houses.getByWorldAndId('Lutabra', '40211')
+        if (housesByWorldAndId.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
 }
 
-function testHousesGetByWorldAndTownAndType() {
+async function testHousesGetByWorldAndTownAndType() {
     try {
-        tibiaAPI.houses.getByWorldTownAndType('Lutabra', 'thais', 'houses').then((response) => {
-            console.log(response)
-        })
+        // houses or guildhalls
+        let housesByWorldAndTownAndType = await tibiaAPI.houses.getByWorldTownAndType('Lutabra', 'thais', 'houses')
+        if (housesByWorldAndTownAndType.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
 }
 
-function testHousesGetByWorldAndTown() {
+async function testHousesGetByWorldAndTown() {
     try {
-        tibiaAPI.houses.getByWorldAndTown('Lutabra', 'thais').then((response) => {
-            console.log(response)
-        })
+        let housesByWorldAndTown = await tibiaAPI.houses.getByWorldAndTown('Lutabra', 'thais')
+        if (housesByWorldAndTown.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
 }
 
-function testHousesGetHousesByWorld() {
+async function testHousesGetHousesByWorld() {
     try {
-        tibiaAPI.houses.getByWorld('Lutabra').then((response) => {
-            console.log(response)
-        })
+        let housesByWorld = await tibiaAPI.houses.getByWorld('Lutabra')
+        if (housesByWorld.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
@@ -121,7 +120,7 @@ async function testHighscoresGetByWorldTypeAndVocation() {
     // You can use following fields instead: all, druid, knight, paladin and sorcerer.
     try {
         let highscoresInfoByWorldTypeAndVocation = await tibiaAPI.highscores.getByWorldTypeAndVocation('Lutabra', 'experience', 'knight')
-        console.log(highscoresInfoByWorldTypeAndVocation)
+        if (highscoresInfoByWorldTypeAndVocation.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
@@ -130,7 +129,7 @@ async function testHighscoresGetByWorldTypeAndVocation() {
 async function testHighscoresGetByWorldAndType() {
     try {
         let highscoresInfoByWorldAndType = await tibiaAPI.highscores.getByWorldAndType('Lutabra', 'experience')
-        console.log(highscoresInfoByWorldAndType)
+        if (highscoresInfoByWorldAndType.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
@@ -139,7 +138,7 @@ async function testHighscoresGetByWorldAndType() {
 async function testHighscoresGetByWorld() {
     try {
         let highscoresInfo = await tibiaAPI.highscores.getByWorld('Lutabra')
-        console.log(highscoresInfo)
+        if (highscoresInfo.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
@@ -150,15 +149,15 @@ async function testHighscoresGetByWorld() {
 async function testGuildByName() {
     try {
         let guildInfo = await tibiaAPI.guilds.getByName('Skeletin Alliance')
-        console.log(guildInfo)
+        if (guildInfo.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
 }
-function testGuildByWorld() {
+async function testGuildByWorld() {
     try {
-        let guildInfo = tibiaAPI.guilds.getByWorld('Lutabra')
-        console.log(guildInfo)
+        let guildInfo = await tibiaAPI.guilds.getByWorld('Lutabra')
+        if (guildInfo.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
@@ -166,8 +165,8 @@ function testGuildByWorld() {
 // Characters test
 async function testCharacterInfo() {
     try {
-        let response = await tibiaAPI.characters.getInfoByName('Akox Shena')
-        console.log(response)
+        let characterInfo = await tibiaAPI.characters.getInfoByName('Akox Shena')
+        if (characterInfo.information) console.log('Test OK')
     } catch (error) {
         console.log(error)
     }
