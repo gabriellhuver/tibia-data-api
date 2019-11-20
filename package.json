@@ -1,6 +1,6 @@
 {
   "name": "tibia-data-api",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "A simple NodeJS interface to https://tibiadata.com/ API",
   "main": "lib/index.js",
   "scripts": {
