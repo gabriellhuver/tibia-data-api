@@ -70,10 +70,9 @@ async function testGetLatestNews() {
 
 // Houses test
 /**
- * Default value of town is Ab’Dendriel.
+ *
 You can use following fields instead: Ab’Dendriel, Ankrahmun, Carlin, Darashia, Edron, Farmine, Gray Beach, Kazordoon, Liberty Bay, Port Hope, Rathleton, Svargrond, Thais, Venore and Yalahar (or yeah, all the Tibia cities).
 
-Default value of type is houses.
 You can use following fields instead: houses and guildhalls. 
  */
 async function testHousesGetByWorldAndId() {
