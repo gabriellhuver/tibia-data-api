@@ -1,5 +1,6 @@
 # Tibia Data API
- 
+
+![](https://travis-ci.org/gabriellhuver/tibia-data-api.svg?branch=master) 
 
 A simple NodeJS interface to https://tibiadata.com/ API
 
